@@ -19,7 +19,8 @@ def main():
                 return  # This will exit the loop and the program
         
         dt = clock.tick(60) / 1000
-        player.update(dt)
+        keys = pygame.key.get_pressed()
+        player.update(keys, dt)
         screen.fill((0, 0, 0))
         player.draw(screen)
         pygame.display.flip()
