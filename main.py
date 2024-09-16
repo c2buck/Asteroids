@@ -10,6 +10,19 @@ def main():
   
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
+
+#create groups
+
+    updateable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updateable, drawable)
+
+    for obj in updateable:
+        obj.update(dt)
+    
+    for obj in drawable:
+        obj.draw(screen)
+        
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     dt = 0
 
@@ -29,4 +42,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-    test 123
