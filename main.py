@@ -44,7 +44,6 @@ def main():
         for obj in updatable:
             obj.update(dt)
 
-        for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                     player.shoot()
 
@@ -52,6 +51,10 @@ def main():
             if player.is_colliding_with(asteroid):
                 print("Game over!")
                 sys.exit()
+            for shot in shots:
+                if asteroid.is_colliding_with(shot):
+                    shot.kill()
+                    asteroid.kill()  
 
         for obj in drawable:
             obj.draw(screen)
